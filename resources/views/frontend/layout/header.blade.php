@@ -7,7 +7,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                    <a class="navbar-brand" href="{{ route('home') }}"><img src="{{asset('frontend/assets/images/logo.png')}}" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('frontend/assets/images/logo.png') }}" style="width: 300px; height: 120px; object-fit: contain;"></a>
                 </div>
                 <!-- End Header Navigation -->
 

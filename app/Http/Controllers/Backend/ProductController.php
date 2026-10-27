@@ -35,9 +35,17 @@ class ProductController extends Controller
             'description' => 'nullable|string|max:500',
             'price'       => 'required|numeric|min:0',
             'stock'       => 'required|integer|min:0',
-            'image_url'   => 'nullable|string|max:255',
+            'image_url'   => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'status'      => 'required|in:ACTIVE,INACTIVE',
         ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('frontend/assets/images');
+            $file->move($destinationPath, $filename);
+            $validated['image_url'] = 'frontend/assets/images/' . $filename;
+        }
 
         Product::create($validated);
 
